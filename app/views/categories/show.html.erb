@@ -1,0 +1,10 @@
+
+<h2>
+    Category: <%= @category.name %>
+</h2>
+
+<h4>Activity: <% @category.activities.each do |activity| %>
+
+<%= link_to activity.title, activity_path(activity) %>
+<% end %>
+</h4>

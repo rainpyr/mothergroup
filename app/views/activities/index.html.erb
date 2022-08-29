@@ -1,0 +1,18 @@
+<h2>All Activities</h2>
+
+<%= link_to 'Add Activity', new_activity_path %>
+|
+<%= link_to 'Delete Activity', activities_path, method: 'delete' %>
+<p>
+Total: <%= pluralize(@activities.length, 'activity') %>
+</p>
+
+    <ul>
+    <% @activities.each do |activity| %>
+        <li>
+            <%= link_to activity.title, activity_path(activity) %>
+            (<%= link_to activity.user.name, user_path(activity.user) %>)
+        </li>
+        <% end %>
+    
+    </ul>

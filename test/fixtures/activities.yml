@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  in_location: MyText
+  takeplace_time: 2022-08-27 19:37:41
+  description: MyText
+  type: 
+  user_id: 1
+
+two:
+  title: MyText
+  in_location: MyText
+  takeplace_time: 2022-08-27 19:37:41
+  description: MyText
+  type: 
+  user_id: 1

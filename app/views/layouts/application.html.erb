@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mothergroup</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+
+  <nav>
+  <h1> Mother Group Camping Site</h1>
+    <% if @current_user.present? %>
+      Welcome, <%= @current_user.name %>
+      |
+    <%= link_to 'Logout', login_path, method: 'delete' %>
+    <% else %>
+    <%= link_to 'Login', login_path %>
+    |
+    <%= link_to 'Sign Up', new_user_path %>
+    <% end %>
+    |
+  <%= link_to 'Home', root_path %>
+  <br>
+  <%= link_to 'All Activities', activities_path %>
+    <%= yield %>
+
+    <footer>
+    <hr>
+    &copy; MotherGroup Productions 2022 
+    </footer>
+  </body>
+</html>
