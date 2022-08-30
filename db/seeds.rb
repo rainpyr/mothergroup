@@ -60,3 +60,24 @@ a5.categories << c2 << c8
 
 puts "Activity #{ a3.title } has categories: #{ a3.categories.pluck(:name).join(', ') }"
 puts "Category '#{ c1.name }' has #{ c1.activities.pluck(:title).join(', ') }"
+
+print "Creating activity bookings..."
+
+Booking.destroy_all
+
+b1 = Booking.create!
+b2 = Booking.create!
+b3 = Booking.create!
+b4 = Booking.create!
+b5 = Booking.create!
+b6 = Booking.create!
+b7 = Booking.create!
+
+a1.bookings << b1 << b3
+a2.bookings << b4 << b2
+a3.bookings << b5 << b6
+a4.bookings << b7
+
+u1.bookings << b1 << b7
+u2.bookings << b4 << b3 << b6
+u2.bookings << b2 << b5

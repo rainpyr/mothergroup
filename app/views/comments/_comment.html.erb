@@ -1,7 +1,0 @@
-<%= comment.body %>
-      <%= link_to 'reply', new_activity_comment_path(@activity, parent_id: comment.id), remote: true %>
-
-      <% if comment.replies.any? %>
-    <% comment.replies.each do |reply| %> 
-      <%= render partial: 'comments/reply', locals: { reply: reply } %>
-    <% end %>

@@ -8,9 +8,11 @@
 <% end %>
 </h4>
 
+<% if @current_user.present? && @current_user.id == @activity.user_id %>
 <%= link_to 'Edit', edit_activity_path(@activity) %>
 |
 <%= link_to 'Delete', activities_path, method: 'delete' %>
+<% end %>
 <hr>
 
 <p>
@@ -28,9 +30,29 @@
 <%= @activity.description%>
 </p>
 
+
 <p>Comments:</p>
-    <% @activity.comments.each do |comment| %>
-        <%= comment.body %>
+    <% @activity.comments.where(comment_id:nil).each do |comment| %>
+        <em><%= comment.user.name %></em>: <%= comment.body %> 
+
+        <% comment.comments.each do |reply| %>
+        <div class="reply"> <%= reply.body %></div>
+
+        <% end %>
+
+
+        <%= form_with model: @comment, local: true do |f|%>
+        <%= f.hidden_field :comment_id,  value: comment.id %>
+        <%= f.hidden_field :activity_id, value: @activity.id %>
+        <%= f.label 'Reply:' %>
+        <br>
+        <%= f.text_area :body %>
+        <br>
+        <%= f.submit 'Submit' %>
+
+        <% end %>
+       
+            
         <br>
     <% end %>
     <%= form_with model: @comment, local:true do |f| %>

@@ -1,2 +1,9 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h3> <%= @user.name %> created the following activities: </h3>
+
+<% @user.activities.each do |activity| %>
+<%= link_to activity.title,  activity_path(activity)%>
+
+<% end %>
+
+<h3>Eva has <%= @user.bookings.count %> bookings: </h3>
+

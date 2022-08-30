@@ -1,0 +1,30 @@
+<%= form_with model: @activity, local: true do |f| %>
+
+<%= f.label :title%>
+<br>
+<%= f.text_field :title %>
+<br><br>
+
+<%= f.label :in_location %>
+<br>
+<%= f.text_field :in_location %>
+<br><br>
+
+<%= f.label :takeplace_time %>
+<br>
+<%= f.datetime_field :takeplace_time %>
+<br><br>
+
+<%= f.label :description %>
+<br>
+<%= f.text_field :description %>
+<br><br>
+
+<%= f.label :category_id, "Categories"%>
+<br>
+<%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true, multiple: true %>
+<br><br>
+
+<%= f.submit %>
+
+<% end %>

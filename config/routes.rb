@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
   
-  
   root to: 'pages#home'
 
   get '/login' => 'sessions#new' # show login form
@@ -10,7 +9,7 @@ Rails.application.routes.draw do
 
   delete '/activities/:id' => 'activities#destroy'
 
-  resources :activities, :users, :categories, :comments
+  resources :activities, :users, :categories, :comments, :bookings
   
 
 end

@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   
   def new
     @comment = Comment.new 
+    
   end
 
   def create
@@ -35,7 +36,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:activity_id, :body)
+    params.require(:comment).permit(:activity_id, :body, :comment_id)
   end
 
 end

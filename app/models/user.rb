@@ -8,4 +8,5 @@ class User < ApplicationRecord
     
     has_many :activities
     has_many :comments
+    has_many :bookings
 end
