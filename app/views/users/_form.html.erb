@@ -1,0 +1,15 @@
+<%= form_with model: @user, local: true, html: { mulipart: true } do |f| %>
+
+<%= f.label :name%>
+<br>
+<%= f.text_field :name %>
+<br><br>
+
+<%= f.label :image %>
+<br>
+<%= f.file_field :image %>
+<br><br>
+
+<%= f.submit %>
+
+<% end %>

@@ -80,4 +80,39 @@ a4.bookings << b7
 
 u1.bookings << b1 << b7
 u2.bookings << b4 << b3 << b6
-u2.bookings << b2 << b5
+u3.bookings << b2 << b5
+
+print "Creating products..."
+
+Product.destroy_all
+p1 = Product.create! name: 'Baby Shark Toy', description: 'It is a very new toy, my kid only played it once', sold: false, price: 4.50
+
+p2 = Product.create! name: 'Paw Patrol T-shirt', description: 'Size 4, brand new', sold: false, price: 10.00
+
+p3 = Product.create! name: 'Play and Sound', description: 'Can play 30 nursery rhymes, flat battery, can play as normal once the battery is replaced', sold: false, price: 15.00
+
+p4 = Product.create! name: 'Ditty Bird 4', description: 'A musice book', sold: false, price: 4.99
+
+p5 = Product.create! name: 'Toddler Watch', description: 'A watch can tell stories and play music', sold: false, price: 10.99
+
+puts Product.count
+
+print "Creating product types..."
+
+Kind.destroy_all
+
+k1 = Kind.create! name: 'Book'
+k2 = Kind.create! name: 'Clothing'
+k3 = Kind.create! name: 'Toy'
+k4 = Kind.create! name: 'Educational'
+k5 = Kind.create! name: 'Electronic'
+
+u1.products << p1 << p5
+u2.products << p2
+u3.products << p4 << p3
+
+p1.kinds << k3
+p2.kinds << k2
+p4.kinds << k1 << k2 << k4
+p3.kinds << k5 << k3 << k4
+p5.kinds << k5 << k3

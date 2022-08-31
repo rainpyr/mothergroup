@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mothergroup</title>
+    <title>Mothergroup930</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,9 +10,9 @@
   </head>
 
   <body>
-
+  
   <nav>
-  <h1> Mother Group Camping Site</h1>
+  <h1> Mother Group 930</h1>
     <% if @current_user.present? %>
       Welcome, <%= @current_user.name %>
       |
@@ -24,13 +24,27 @@
     <% end %>
     |
   <%= link_to 'Home', root_path %>
+  |
+  
+  <% if @current_user.present? %>
+  
+  <%= link_to 'My Profile', user_path(@current_user.id) %>
+
+  <% end %>
   <br>
   <%= link_to 'All Activities', activities_path %>
+  |
+  <%= link_to 'All Activity Categories', categories_path %>
+  |
+  <%= link_to 'All Products', products_path %>
+  |
+  <%= link_to 'All Product Categories', kinds_path %>
+
     <%= yield %>
 
     <footer>
     <hr>
-    &copy; MotherGroup Productions 2022 
+    &copy; MotherGroup930 Productions 2022 
     </footer>
   
   

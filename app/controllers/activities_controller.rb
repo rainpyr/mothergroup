@@ -11,6 +11,11 @@ class ActivitiesController < ApplicationController
 
     @activity = Activity.new activity_params
     @activity.user_id = @current_user.id
+    if params[:activity][:image].present?
+      response = Cloudinary::Uploader.upload params[:activity][:image]
+      # p response
+      @activity.image = response["public_id"]
+    end
     @activity.save
 
     if @activity.persisted?
@@ -27,6 +32,7 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find params[:id]
     @comment = Comment.new
+    @booking = Booking.new
   end
 
   def edit
@@ -66,11 +72,11 @@ class ActivitiesController < ApplicationController
 
     Activity.destroy params[:id]
 
-    redirect_to movies_path
+    redirect_to activities_path
   end
 
   private
   def activity_params
-    params.require(:activity).permit(:title, :inlocation, :takeplace_time, :description, :user_id)
+    params.require(:activity).permit(:title, :in_location, :takeplace_time, :description, :user_id)
   end
 end

@@ -1,9 +1,56 @@
+
+<h2><%= @user.name %></h2>
+
+<% if @current_user.present? && @current_user.id == @user.id %>
+<%= link_to 'Edit', edit_user_path(@user) %>
+|
+<%= link_to 'Delete', root_path, method: 'delete' %>
+<% end %>
+<br>
+<h3>My Avatar</h3>
+<%= cl_image_tag @user.image, alt: @user.name %>
+
+
 <h3> <%= @user.name %> created the following activities: </h3>
 
 <% @user.activities.each do |activity| %>
 <%= link_to activity.title,  activity_path(activity)%>
+<% if @current_user.present? %>
+(<%= link_to 'delete activity', activity_path(activity.id), method: 'delete' %>)
+<% end %>
+<br>
 
 <% end %>
 
-<h3>Eva has <%= @user.bookings.count %> bookings: </h3>
+<h3> <%= @user.name %> created the following products: </h3>
 
+<% @user.products.each do |product| %>
+<%= link_to product.name,  product_path(product)%>
+<% if @current_user.present? %>
+(<%= link_to 'delete product', product_path(product.id), method: 'delete' %>)
+<% end %>
+<br>
+
+<% end %>
+
+<h3><%= @user.name %> has <%= pluralize(@user.bookings.length, 'booking') %>: </h3>
+
+<% @user.bookings.each do |booking| %>
+
+<%= link_to Activity.find(booking.activity_id).title,  activity_path(booking.activity_id)%>
+<% if @current_user.present? %>
+(<%= link_to 'delete booking', booking_path(booking.id), method: 'delete' %>)
+<% end %>
+<br>
+<% end %>
+
+<h3><%= @user.name %> has <%= pluralize(@user.buys.length, 'buy') %>: </h3>
+
+<% @user.buys.each do |buy| %>
+
+<%= link_to Product.find(buy.product_id).name,  product_path(buy.product_id)%>
+<% if @current_user.present? %>
+(<%= link_to 'delete buy', buy_path(buy.id), method: 'delete' %>)
+<% end %>
+<br>
+<% end %>

@@ -1,0 +1,19 @@
+<h2>All Products</h2>
+
+<%= link_to 'Add Product', new_product_path %>
+|
+<%= link_to 'Delete Product', products_path, method: 'delete' %>
+<p>
+Total: <%= pluralize(@products.length, 'product') %>
+</p>
+
+    <ul>
+    <% @products.each do |product| %>
+        <li>
+            <%= link_to product.name, product_path(product) %>
+            (<%= link_to product.user.name, user_path(product.user) %>)
+            
+        </li>
+        <% end %>
+    
+    </ul>

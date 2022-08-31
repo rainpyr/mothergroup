@@ -4,7 +4,9 @@
 </h2>
 
 <h4>Activity: <% @category.activities.each do |activity| %>
+<br>
 
 <%= link_to activity.title, activity_path(activity) %>
 <% end %>
+<br>
 </h4>

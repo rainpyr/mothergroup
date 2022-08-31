@@ -1,6 +1,12 @@
 <h2>
-    Activity: <%= @activity.title %>
+    Activity: <%= @activity.title %>   
 </h2>
+
+<%= form_with model: @booking, local:true do |f| %>
+        <%= f.hidden_field :activity_id, value: @activity.id %>
+        
+      <%= f.submit 'Book Activity' %>
+    <% end %>
 
 <h4>Category: <% @activity.categories.each do |category| %>
 
@@ -22,7 +28,7 @@
 
 <p>
 <strong>Time:</strong>
-<%= @activity.takeplace_time%>
+<%= @activity.takeplace_time.strftime '%A %e %b, %Y %l:%M%P '%>
 </p>
 
 <p>
@@ -30,13 +36,20 @@
 <%= @activity.description%>
 </p>
 
+<% if @activity.image.present? %>
+    <%= cl_image_tag @activity.image, alt: @activity.title %>
+
+<% end %>
+
+<button class="like" type="button" onClick="onClick()"><a id="clicks"></a> Like! </button>
+
 
 <p>Comments:</p>
     <% @activity.comments.where(comment_id:nil).each do |comment| %>
         <em><%= comment.user.name %></em>: <%= comment.body %> 
-
+    <br>
         <% comment.comments.each do |reply| %>
-        <div class="reply"> <%= reply.body %></div>
+        <em>Replied by <%= reply.user.name %></em>: <%= reply.body %>
 
         <% end %>
 
@@ -44,15 +57,17 @@
         <%= form_with model: @comment, local: true do |f|%>
         <%= f.hidden_field :comment_id,  value: comment.id %>
         <%= f.hidden_field :activity_id, value: @activity.id %>
-        <%= f.label 'Reply:' %>
+
+        
+        <input type="button" name="answer" value="Reply" onclick="reply()" />
+        <div id="reply"  style="display:none;" class="reply">
+        <%= f.label 'Reply' %>
         <br>
         <%= f.text_area :body %>
         <br>
         <%= f.submit 'Submit' %>
-
-        <% end %>
-       
-            
+        </div>
+        <% end %>          
         <br>
     <% end %>
     <%= form_with model: @comment, local:true do |f| %>

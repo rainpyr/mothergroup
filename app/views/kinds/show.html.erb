@@ -1,0 +1,11 @@
+<h2>
+    Category: <%= @kind.name %>
+</h2>
+
+<h4>Product: <% @kind.products.each do |product| %>
+<br>
+
+<%= link_to product.name, product_path(product) %>
+<% end %>
+<br>
+</h4>

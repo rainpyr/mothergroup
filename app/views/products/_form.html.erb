@@ -1,0 +1,35 @@
+<%= form_with model: @product, local: true, html: { mulipart: true } do |f| %>
+
+<%= f.label :name%>
+<br>
+<%= f.text_field :name %>
+<br><br>
+
+<%= f.label :description %>
+<br>
+<%= f.text_field :description %>
+<br><br>
+
+<%= f.label :sold %>
+<br>
+<%= f.check_box :sold %>
+<br><br>
+
+<%= f.label :price %>
+<br>
+<%= f.number_field :price %>
+<br><br>
+
+<%= f.label :kind_id, "Categories"%>
+<br>
+<%= f.collection_select :kind_id, Kind.all, :id, :name, include_blank: true, multiple: true %>
+<br><br>
+
+<%= f.label :image %>
+<br>
+<%= f.file_field :image %>
+<br><br>
+
+<%= f.submit %>
+
+<% end %>

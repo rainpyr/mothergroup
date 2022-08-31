@@ -9,4 +9,6 @@ class User < ApplicationRecord
     has_many :activities
     has_many :comments
     has_many :bookings
+    has_many :products
+    has_many :buys
 end

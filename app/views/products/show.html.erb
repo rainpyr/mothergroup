@@ -1,0 +1,85 @@
+<h2>
+    Product: <%= @product.name %> <br>
+</h2>
+<p>Posted by: <em><%= @product.user.name %></em></p>
+
+<%= form_with model: @buy, local:true do |f| %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        
+      <%= f.submit 'Buy this item' %>
+    <% end %>
+
+<h4>Category: <% @product.kinds.each do |kind| %>
+
+<%= link_to kind.name, kind_path(kind) %>
+<% end %>
+</h4>
+
+<% if @current_user.present? && @current_user.id == @product.user_id %>
+<%= link_to 'Edit', edit_product_path(@product) %>
+|
+<%= link_to 'Delete', products_path, method: 'delete' %>
+<% end %>
+<hr>
+
+<p>
+<strong>Description:</strong>
+<%= @product.description%>
+</p>
+
+<p>
+<strong>Sold?</strong>
+<% if  @product.sold  == true %>
+Yes
+<% else %>
+No
+<% end %>
+</p>
+
+<p>
+<strong>Price:</strong>
+$<%= @product.price%>
+</p>
+
+<% if @product.image.present? %>
+    <%= cl_image_tag @product.image, alt: @product.name %>
+
+<% end %>
+
+<button class="like" type="button" onClick="onClick()"><a id="clicks"></a> Like! </button>
+
+
+<p>Comments:</p>
+    <% @product.comments.where(comment_id:nil).each do |comment| %>
+        <em><%= comment.user.name %></em>: <%= comment.body %> 
+    <br>
+        <% comment.comments.each do |reply| %>
+        <em>Replied by <%= reply.user.name %></em>: <%= reply.body %>
+
+        <% end %>
+
+
+        <%= form_with model: @comment, local: true do |f|%>
+        <%= f.hidden_field :comment_id,  value: comment.id %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+
+        
+        <input type="button" name="answer" value="Reply" onclick="reply()" />
+        <div id="reply"  style="display:none;" class="reply">
+        <%= f.label 'Reply' %>
+        <br>
+        <%= f.text_area :body %>
+        <br>
+        <%= f.submit 'Submit' %>
+        </div>
+        <% end %>          
+        <br>
+    <% end %>
+    <%= form_with model: @comment, local:true do |f| %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.label 'New comment:' %>
+        <br>
+        <%= f.text_area :body %>
+        <br>
+      <%= f.submit 'Submit' %>
+    <% end %>
