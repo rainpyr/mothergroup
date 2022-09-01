@@ -7,39 +7,45 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= cloudinary_js_config %>
   </head>
 
   <body>
   
+  <h1 class="heading"> Mother Group 930</h1>
+  <div class="header">
   <nav>
-  <h1> Mother Group 930</h1>
+  <ul>
     <% if @current_user.present? %>
-      Welcome, <%= @current_user.name %>
-      |
-    <%= link_to 'Logout', login_path, method: 'delete' %>
-    <% else %>
-    <%= link_to 'Login', login_path %>
-    |
-    <%= link_to 'Sign Up', new_user_path %>
-    <% end %>
-    |
-  <%= link_to 'Home', root_path %>
+     <strong> Welcome, <%= @current_user.name %></strong>
   |
   
   <% if @current_user.present? %>
   
-  <%= link_to 'My Profile', user_path(@current_user.id) %>
+ <li> <%= link_to 'My Profile', user_path(@current_user.id) %> </li>
 
   <% end %>
+      |
+   <li> <%= link_to 'Logout', login_path, method: 'delete' %> </li>
+    <% else %>
+    <li><%= link_to 'Login', login_path %></li>
+    |
+    <li><%= link_to 'Sign Up', new_user_path %></li>
+    <% end %>
+    |
+  <li><%= link_to 'Home', root_path %> </li>
   <br>
-  <%= link_to 'All Activities', activities_path %>
+ <li> <%= link_to 'All Activities', activities_path %> </li>
   |
-  <%= link_to 'All Activity Categories', categories_path %>
+ <li> <%= link_to 'All Activity Categories', categories_path %> </li>
   |
-  <%= link_to 'All Products', products_path %>
+ <li> <%= link_to 'All Products', products_path %> </li>
   |
-  <%= link_to 'All Product Categories', kinds_path %>
-
+ <li> <%= link_to 'All Product Categories', kinds_path %> </li>
+  </ul>
+  </nav>
+  <hr>
+</div>
     <%= yield %>
 
     <footer>

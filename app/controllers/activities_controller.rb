@@ -19,7 +19,7 @@ class ActivitiesController < ApplicationController
     @activity.save
 
     if @activity.persisted?
-      redirect_to activities_path
+      redirect_to activity_path(@activity)
     else
       render :new
     end #else
@@ -38,6 +38,7 @@ class ActivitiesController < ApplicationController
   def edit
     @activity = Activity.find params[:id]
     
+    
     if @activity.user_id != @current_user.id
       redirect_to login_path # don't even show the edit form  
     end
@@ -46,14 +47,24 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity = Activity.find params[:id]
+    if params[:activity][:image].present?
+      response = Cloudinary::Uploader.upload params[:activity][:image]
+      # p response
+      @activity.image = response["public_id"]
+    end
+    @activity.save
 
-    # check again that this mixtape belongs to the logged-in user, since people can still work out the edit URL
+    
     if @activity.user_id != @current_user.id
       redirect_to login_path
       return
-      #stop the rest of the code from running
-      #i.e prevent .ipdate that follows
-      # note: a redirect_to does not on its own prevernt the rest of the controller action's code from running
+      
+    end
+
+    @activity.categories.delete_all
+
+    if params[:category_ids].present?
+      @activity.categories << Category.find(params[:category_ids])
     end
     
     if @activity.update activity_params
@@ -64,14 +75,14 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
+    @activity = Activity.find params[:id]
 
     if @activity.user_id != @current_user.id
       redirect_to login_path
       return
     end
 
-    Activity.destroy params[:id]
-
+    @activity.destroy
     redirect_to activities_path
   end
 

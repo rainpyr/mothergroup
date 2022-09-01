@@ -1,19 +1,19 @@
 ---
 development:
-  cloud_name: dzf5dwcu5
-  api_key: '891148266566849'
-  api_secret: b7iLYkFrg01DS8kt9rSs3XSI0RI
+  cloud_name: <%= ENV["CLOUDINARY_CLOUD_NAME"] %>
+  api_key: <%= ENV["CLOUDINARY_API_KEY"] %>
+  api_secret: <%= ENV["CLOUDINARY_API_SECRET"] %>
   enhance_image_tag: true
   static_file_support: false
 production:
-  cloud_name: dzf5dwcu5
-  api_key: '891148266566849'
-  api_secret: b7iLYkFrg01DS8kt9rSs3XSI0RI
+  cloud_name: <%= ENV["CLOUDINARY_CLOUD_NAME"] %>
+  api_key: <%= ENV["CLOUDINARY_API_KEY"] %>
+  api_secret: <%= ENV["CLOUDINARY_API_SECRET"] %>
   enhance_image_tag: true
   static_file_support: true
 test:
-  cloud_name: dzf5dwcu5
-  api_key: '891148266566849'
-  api_secret: b7iLYkFrg01DS8kt9rSs3XSI0RI
+  cloud_name: <%= ENV["CLOUDINARY_CLOUD_NAME"] %>
+  api_key: <%= ENV["CLOUDINARY_API_KEY"] %>
+  api_secret: <%= ENV["CLOUDINARY_API_SECRET"] %>
   enhance_image_tag: true
   static_file_support: false

@@ -1,8 +1,7 @@
 <h2>All Products</h2>
 
 <%= link_to 'Add Product', new_product_path %>
-|
-<%= link_to 'Delete Product', products_path, method: 'delete' %>
+
 <p>
 Total: <%= pluralize(@products.length, 'product') %>
 </p>

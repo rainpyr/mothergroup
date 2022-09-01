@@ -13,11 +13,11 @@ class BuysController < ApplicationController
       redirect_to login_path
     end
 
-    # if @buy.persisted?
-    #   redirect_to user_path(@current_user.id)
-    # else
-    #   render :new
-    # end #else
+    if @buy.persisted?
+      redirect_to user_path(@current_user.id)
+    else
+      render :new
+    end #else
   end
 
   def index

@@ -20,9 +20,13 @@
 <%= f.number_field :price %>
 <br><br>
 
-<%= f.label :kind_id, "Categories"%>
+<%= f.label :kind_id, "Categories:"%>
 <br>
-<%= f.collection_select :kind_id, Kind.all, :id, :name, include_blank: true, multiple: true %>
+
+<% Kind.all.each do |kind| %>
+    <%= check_box_tag "kind_ids[]", kind.id, @product.kinds.include?(kind) %>
+    <%= kind.name %> <br>
+<% end %>
 <br><br>
 
 <%= f.label :image %>
@@ -33,3 +37,4 @@
 <%= f.submit %>
 
 <% end %>
+<br><br>

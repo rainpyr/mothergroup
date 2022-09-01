@@ -1,13 +1,13 @@
 <h2>
-    Product: <%= @product.name %> <br>
-</h2>
-<p>Posted by: <em><%= @product.user.name %></em></p>
-
-<%= form_with model: @buy, local:true do |f| %>
+    Product: <%= @product.name %> <%= form_with model: @buy, local:true do |f| %>
         <%= f.hidden_field :product_id, value: @product.id %>
         
       <%= f.submit 'Buy this item' %>
     <% end %>
+</h2>
+<p>Posted by: <em><%= @product.user.name %></em></p>
+
+
 
 <h4>Category: <% @product.kinds.each do |kind| %>
 
@@ -18,7 +18,7 @@
 <% if @current_user.present? && @current_user.id == @product.user_id %>
 <%= link_to 'Edit', edit_product_path(@product) %>
 |
-<%= link_to 'Delete', products_path, method: 'delete' %>
+<%= link_to 'Delete', product_path(@product.id), method: 'delete' %>
 <% end %>
 <hr>
 
@@ -42,10 +42,10 @@ $<%= @product.price%>
 </p>
 
 <% if @product.image.present? %>
-    <%= cl_image_tag @product.image, alt: @product.name %>
+    <%= cl_image_tag @product.image, alt: @product.name, width: 300, height: 300 %>
 
 <% end %>
-
+<br>
 <button class="like" type="button" onClick="onClick()"><a id="clicks"></a> Like! </button>
 
 

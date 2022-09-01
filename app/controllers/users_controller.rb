@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create user_params
+    
+    @user.save
     if @user.persisted?
       session[:user_id] = @user.id
       redirect_to user_path(@user.id)
@@ -25,6 +27,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
+    if params[:image].present?
+      response = Cloudinary::Uploader.upload params[:image]
+      # p response
+      @user.image = response["public_id"]
+    end
+    @user.save
     
     if @user.id != @current_user.id
       redirect_to login_path # don't even show the edit form  
@@ -34,6 +42,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
+    if params[:user][:image].present?
+      response = Cloudinary::Uploader.upload params[:user][:image]
+      # p response
+      @user.image = response["public_id"]
+    end
+    @user.save
 
     if @user.id != @current_user.id
       redirect_to login_path
@@ -49,13 +63,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
+    @user = User.find params[:id]
     if @user.id != @current_user.id
       redirect_to login_path
       return
     end
 
-    User.destroy params[:id]
+    @user.destroy
 
     redirect_to root_path
   end

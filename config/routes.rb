@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   delete '/activities/:id' => 'activities#destroy'
 
+  delete '/products/:id' => 'products#destroy'
+
   resources :activities, :users, :categories, :comments, :bookings, :products, :kinds, :buys
   
 

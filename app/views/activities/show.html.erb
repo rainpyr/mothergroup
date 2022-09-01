@@ -17,7 +17,7 @@
 <% if @current_user.present? && @current_user.id == @activity.user_id %>
 <%= link_to 'Edit', edit_activity_path(@activity) %>
 |
-<%= link_to 'Delete', activities_path, method: 'delete' %>
+<%= link_to 'Delete', activity_path(@activity.id), method: 'delete' %>
 <% end %>
 <hr>
 
@@ -37,7 +37,7 @@
 </p>
 
 <% if @activity.image.present? %>
-    <%= cl_image_tag @activity.image, alt: @activity.title %>
+    <%= cl_image_tag @activity.image, alt: @activity.title, width: 300, height: 300 %>
 
 <% end %>
 

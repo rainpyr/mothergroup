@@ -1,17 +1,117 @@
 
 
 body {
-    background-image: url("https://wallpapercave.com/wp/wp3179995.jpg");
-    background-color: pink;
+    background-image: url("https://c2.vanceai.com/posts/16221724663407807-FreepixSAmple.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: monospace;
+    font-size: 16px;
+    padding-bottom: 2rem;
+    
 }
 
+.homepageh2 {
+    text-align: center;
+}
+
+.homepageul {
+    text-align: center;
+}
+
+.activityboard {
+    border-radius: 50%
+}
+
+.marketplace {
+    border-radius: 50%;
+    
+}
+
+footer {
+   
+    bottom: 0;
+    width: 100%;
+    height: 60px; 
+    
+    
+ }
+
+nav ul {
+    overflow: hidden;
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    transition: 1s;
+  }
+  
+  nav ul li a {
+    padding: 0 40px;
+    line-height: 45px;
+    color: rgb(4, 29, 66);
+  }
+  
+  nav ul li:hover {
+    transform: scale(1.0);
+    background: rgba(26, 115, 232, 0.3);
+  }
+
+
+
 .like {
-    color: rgb(8, 7, 8);
+color: rgb(8, 7, 8);
   }
 
 button {
-    background-color: rgb(217, 140, 178);
-    border-radius: 15px;
+background-color: rgb(217, 140, 178);
+border-radius: 15px;
 }
 
+.main {
+ 
+        width: 100%; 
+        height: 300px;
+        background: #185a9d;
+        border-radius: 50%;
+
+}
+
+.left{
+float:left;
+height:500px;
+width:50%;
+background-color: rgb(184, 226, 244);  
+margin-bottom: 60px;  
+border-radius: 40%;
+text-align: center;
+}
+    
+.right{
+float:right;
+width:50%;
+height:500px;
+background-color: rgb(184, 226, 244);
+margin-bottom: 60px;
+border-radius: 40%;
+text-align: center;
+}
+
+.heading {
+    animation-duration: 10s;
+    animation-name: slidein;    
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+  
