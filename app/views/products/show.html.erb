@@ -1,10 +1,11 @@
-<h2>
-    Product: <%= @product.name %> <%= form_with model: @buy, local:true do |f| %>
+<div calss="show">
+    <h2>Product: <%= @product.name %> </h2>
+    <%= form_with model: @buy, local:true do |f| %>
         <%= f.hidden_field :product_id, value: @product.id %>
         
       <%= f.submit 'Buy this item' %>
     <% end %>
-</h2>
+
 <p>Posted by: <em><%= @product.user.name %></em></p>
 
 
@@ -83,3 +84,5 @@ $<%= @product.price%>
         <br>
       <%= f.submit 'Submit' %>
     <% end %>
+    </div>
+<h2>

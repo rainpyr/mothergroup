@@ -1,6 +1,9 @@
+<div calss="show">
+
 <h2>
     Activity: <%= @activity.title %>   
 </h2>
+<p>Created by: <em><%= @activity.user.name %></em></p>
 
 <%= form_with model: @booking, local:true do |f| %>
         <%= f.hidden_field :activity_id, value: @activity.id %>
@@ -49,7 +52,7 @@
         <em><%= comment.user.name %></em>: <%= comment.body %> 
     <br>
         <% comment.comments.each do |reply| %>
-        <em>Replied by <%= reply.user.name %></em>: <%= reply.body %>
+        <em>Replied by <%= reply.user.name %></em>: <%= reply.body %><br>
 
         <% end %>
 
@@ -78,3 +81,4 @@
         <br>
       <%= f.submit 'Submit' %>
     <% end %>
+</div>
