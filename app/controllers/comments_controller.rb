@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # raise 'hell'
     @comment = Comment.new comment_params
     @comment.user_id = @current_user.id
     @comment.save
@@ -19,6 +18,8 @@ class CommentsController < ApplicationController
     else
       render :new
     end #else
+
+    
   end
 
   def index

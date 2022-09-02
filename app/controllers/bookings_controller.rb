@@ -3,14 +3,14 @@ class BookingsController < ApplicationController
   before_action :check_if_logged_in
   
   def new
-    # raise 'hell'
+    
     @booking = Booking.new
 
   end
 
   def create
     @booking = Booking.new booking_params
-    # @booking.activity_id = params[:activity_id]
+    
     @booking.user_id = @current_user.id
     @booking.save
 

@@ -15,6 +15,22 @@ I have developed two sections in the App, one is an "Activity Board", and the ot
 
 * Once a marketplace product is posted, user can view it, and add it to their own buys. Payment system is not estalished yet, this is more like an information sharing section.
 
-* All activities and products are tagged by categories, everyone can go to the category tag to see all activities/products under this category.
+* All activities and products are tagged by categories, everyone can go to the category tag to see all activities/products fall into this category.
 
-## 
+* Users can leave comments to each activity or product, they can also reply each comment.
+
+## Tools
+
+* Ruby on Rails
+* Javascript
+* HTML
+* CSS
+
+## Known Bugs
+
+* The reply always go to the first comment
+
+## Wishlist
+
+* Search function throughout the website
+* Admin account to manage the site

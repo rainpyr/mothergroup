@@ -12,7 +12,7 @@
 
 <h4>Category: <% @product.kinds.each do |kind| %>
 
-<%= link_to kind.name, kind_path(kind) %>
+<%= link_to "##{kind.name}", kind_path(kind) %>
 <% end %>
 </h4>
 
@@ -47,7 +47,7 @@ $<%= @product.price%>
 
 <% end %>
 <br>
-<button class="like" type="button" onClick="onClick()"><a id="clicks"></a> Like! </button>
+<button class="like" type="button" onClick="onClick()"><a id="clickme"></a> Like! </button>
 
 
 <p>Comments:</p>
@@ -55,6 +55,7 @@ $<%= @product.price%>
         <em><%= comment.user.name %></em>: <%= comment.body %> 
     <br>
         <% comment.comments.each do |reply| %>
+
         <em>Replied by <%= reply.user.name %></em>: <%= reply.body %>
 
         <% end %>
@@ -63,7 +64,7 @@ $<%= @product.price%>
         <%= form_with model: @comment, local: true do |f|%>
         <%= f.hidden_field :comment_id,  value: comment.id %>
         <%= f.hidden_field :product_id, value: @product.id %>
-
+        
         
         <input type="button" name="answer" value="Reply" onclick="reply()" />
         <div id="reply"  style="display:none;" class="reply">

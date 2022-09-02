@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
     
     # connect the selectd kinds to product using the many-to-many association
     
-    @product.kinds.delete_all
+    @product.kinds.delete_all # clear all the previous selection to avoid double selection/display of the category
     
     if params[:kind_ids].present?
       @product.kinds << Kind.find(params[:kind_ids])

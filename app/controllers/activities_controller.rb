@@ -40,7 +40,7 @@ class ActivitiesController < ApplicationController
     
     
     if @activity.user_id != @current_user.id
-      redirect_to login_path # don't even show the edit form  
+      redirect_to login_path 
     end
 
   end
@@ -60,8 +60,9 @@ class ActivitiesController < ApplicationController
       return
       
     end
-
-    @activity.categories.delete_all
+    # connect the selectd categories to activity using the many-to-many association
+    
+    @activity.categories.delete_all # clear all the previous selection to avoid double selection/display of the category
 
     if params[:category_ids].present?
       @activity.categories << Category.find(params[:category_ids])

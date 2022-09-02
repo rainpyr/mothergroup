@@ -13,7 +13,7 @@
 
 <h4>Category: <% @activity.categories.each do |category| %>
 
-<%= link_to category.name, category_path(category) %>
+<%= link_to "##{category.name}", category_path(category) %>
 <% end %>
 </h4>
 
@@ -43,8 +43,8 @@
     <%= cl_image_tag @activity.image, alt: @activity.title, width: 300, height: 300 %>
 
 <% end %>
-
-<button class="like" type="button" onClick="onClick()"><a id="clicks"></a> Like! </button>
+<br>
+<button class="like" type="button" onClick="onClick()"><a id="clickme"></a> Like! </button>
 
 
 <p>Comments:</p>

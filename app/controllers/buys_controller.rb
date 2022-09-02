@@ -5,7 +5,7 @@ class BuysController < ApplicationController
 
   def create
     @buy = Buy.new buy_params
-    # @booking.activity_id = params[:activity_id]
+    
     if @current_user.present?
       @buy.user_id = @current_user.id
       @buy.save

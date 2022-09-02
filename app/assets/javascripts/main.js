@@ -1,8 +1,8 @@
 
-let clicks = 0;
+let clickMe = 0;
 const onClick = function() {
-  clicks += 1;
-  document.getElementById("clicks").innerHTML = clicks;
+  clickMe += 1;
+  document.getElementById("clickme").innerHTML = clickMe;
 };
 
 
