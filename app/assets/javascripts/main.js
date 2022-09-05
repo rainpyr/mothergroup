@@ -6,8 +6,8 @@ const onClick = function() {
 };
 
 
-function reply() {
+const reply = function() {
     document.getElementById('reply').style.display = "block";
- }
+};
 
 
