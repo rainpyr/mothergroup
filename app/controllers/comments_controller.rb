@@ -14,12 +14,14 @@ class CommentsController < ApplicationController
     
 
     if @comment.persisted?
-      redirect_to activity_path(params[:comment][:activity_id])
+
+      redirect_back(fallback_location: root_path)
+      # redirect_to activity_path(params[:comment][:activity_id])
     else
       render :new
     end #else
 
-    
+
   end
 
   def index
@@ -37,7 +39,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:activity_id, :body, :comment_id)
+    params.require(:comment).permit(:activity_id, :body, :comment_id, :product_id)
   end
 
 end

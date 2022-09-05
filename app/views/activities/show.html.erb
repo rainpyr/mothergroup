@@ -62,8 +62,8 @@
         <%= f.hidden_field :activity_id, value: @activity.id %>
 
         
-        <input type="button" name="answer" value="Reply" onclick="reply()" />
-        <div id="reply"  style="display:none;" class="reply">
+        <input type="button" name="answer" value="Reply" onclick="reply(<%= comment.id %>)" />
+        <div id="reply<%= comment.id %>"  style="display:none;" class="reply">
         <%= f.label 'Reply' %>
         <br>
         <%= f.text_area :body %>
